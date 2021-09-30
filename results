@@ -1,0 +1,9 @@
+log/s    method
+30       port-forward
+1.7k     rsyslog
+7k       local sg to loki
+7k       10000 batch size
+7k       5000 batch size
+7k       500 batch size
+7k       2000 batch size
+

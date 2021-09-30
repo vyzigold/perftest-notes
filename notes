@@ -1,0 +1,16 @@
+quicklab-pv - persistent volume configuration for loki on quicklab (don't use anywhere else)
+
+ocp prom password:
+	oc project openshift-monitoring
+	secret: grafana-datasources: data: prometheus.yaml > base64 -d
+			basicAuthPassword
+
+logging sg with metrics:
+	edit the logging sg template in STO and add metrics there
+
+getting loki and qdr metrics to prometheus
+	oc apply loki and qdr servicemonitors
+
+deploy test-qdr
+
+change test-qdr service to nodeport to expose the port (use that port + the worker ip in rsyslog)

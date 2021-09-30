@@ -1,0 +1,49 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  creationTimestamp: "2021-09-15T15:00:38Z"
+  generation: 13
+  labels:
+    app: smart-gateway
+  managedFields:
+  - apiVersion: monitoring.coreos.com/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        .: {}
+        f:endpoints: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app.kubernetes.io/name: {}
+    manager: Mozilla
+    operation: Update
+    time: "2021-09-15T15:29:15Z"
+  name: loki-monitor
+  namespace: service-telemetry
+  resourceVersion: "12863410"
+  selfLink: /apis/monitoring.coreos.com/v1/namespaces/service-telemetry/servicemonitors/loki-monitor
+  uid: 4a209cce-7b6c-4c8c-86b5-d7ea6293cf01
+spec:
+  endpoints:
+  - interval: 10s
+    metricRelabelings:
+    - action: labeldrop
+      regex: pod
+    - action: labeldrop
+      regex: namespace
+    - action: labeldrop
+      regex: instance
+    - action: labeldrop
+      regex: job
+    - action: labeldrop
+      regex: publisher
+    port: metrics
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: loki
